@@ -68,6 +68,9 @@ public:
 	//throws exception if line is not a valid line
 	MatrixIterator iterator(int line) const;
 
+	//transforms the current matrix into its own transposed (element from position i,j, becomes element on position j,i)
+	void transpose();
+
 	//destructor
 	~Matrix();
 };

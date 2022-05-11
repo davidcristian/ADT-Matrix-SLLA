@@ -59,8 +59,6 @@ void testQuantity()
 		}
 	}
 
-	cout << "Test quantity 1/3" << endl;
-
 	for (int i = 0; i <= m.nrLines() / 2; i++)
 	{
 		for (int j = 0; j <= m.nrColumns() / 2; j++)
@@ -81,8 +79,6 @@ void testQuantity()
 		}
 	}
 
-	cout << "Test quantity 2/3" << endl;
-
 	for (int i = 0; i < m.nrLines(); i++)
 		for (int j = 0; j < m.nrColumns(); j++)
 			if (i % 2 == 0 && j % 2 == 0)
@@ -91,8 +87,6 @@ void testQuantity()
 				if (j % 3 == 0)
 					assert(m.element(i, j) == i + j);
 				else assert(m.element(i, j) == NULL_TELEM);
-
-	cout << "Test quantity 3/3" << endl;
 }
 
 void testExceptions()
@@ -155,8 +149,6 @@ void testMix()
 		}
 	}
 
-	cout << "Test mix 1/3" << endl;
-
 	for (int i = 0; i < size / 2; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -177,8 +169,6 @@ void testMix()
 			}
 		}
 	}
-
-	cout << "Test mix 2/3" << endl;
 
 	for (int i = 0; i < size / 2; i++)
 	{
@@ -206,12 +196,7 @@ void testMix()
 				assert(e == NULL_TELEM);
 			}
 		}
-
-		if (i % 50 == 0)
-			cout << "Test mix " << i << "/" << size / 2 << endl;
 	}
-
-	cout << "Test mix 3/3" << endl;
 }
 
 void testLexicographicOrder()
@@ -229,6 +214,7 @@ void testLexicographicOrder()
 		}
 	}
 	m.modify(2, 1, 10);
+	m.modify(3, 3, 10);
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -239,6 +225,21 @@ void testLexicographicOrder()
 
 		cout << endl;
 	}
+
+	cout << endl << "Print transposed matrix" << endl;
+	m.transpose();
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			cout << m.element(i, j) << " ";
+		}
+
+		cout << endl;
+	}
+
+	m.transpose();
 	cout << endl << "Print based on lexicographic order of nodes with iterator" << endl;
 
 	MatrixIterator mi = m.iterator();

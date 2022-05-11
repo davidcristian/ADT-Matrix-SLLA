@@ -133,10 +133,10 @@ TElem Matrix::element(int i, int j) const
 
 /// <summary>
 /// Complexity:
-/// WC: Theta(2N)
+/// WC: Theta(N)
 /// BC: Theta(1)
-/// AC: Theta(2N)
-/// Total time complexity: O(2N)
+/// AC: Theta(N)
+/// Total time complexity: O(N)
 /// </summary>
 TElem Matrix::modify(int i, int j, TElem e)
 {
@@ -286,6 +286,26 @@ MatrixIterator Matrix::iterator(int line) const
 	}
 
 	return MatrixIterator(*m);
+}
+
+/// <summary>
+/// Complexity:
+/// WC: Theta(N)
+/// BC: Theta(1)
+/// AC: Theta(N)
+/// Total time complexity: O(N)
+/// </summary>
+void Matrix::transpose()
+{
+	int current = this->head;
+	while (current != -1)
+	{
+		int tmp = this->elems[current].row;
+		this->elems[current].row = this->elems[current].col;
+		this->elems[current].col = tmp;
+
+		current = this->next[current];
+	}
 }
 
 /// <summary>
